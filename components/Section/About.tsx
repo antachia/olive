@@ -7,7 +7,7 @@ const About = () => {
     return (
         <section id="about" className="min-h-[85dvh] w-screen relative flex items-end justify-center bg-white overflow-x-clip rounded-t-[4rem] -mt-12">
             <div className="max-w-7xl flex flex-col justify-center items-center font-[PPEditorialNew-Ultralight]">
-                <h2 className="text-7xl font-bold text-black mb-4 uppercase text-center">Behold <span className="text-orange-400 font-[PPEditorialNew-Italic]">ANTAKYA</span> Olive Oil</h2>
+                <h2 className="text-7xl font-bold text-black mb-4 uppercase text-center">Behold <span className="text-orange-400 font-[PPEditorialNew-Italic]">Antachia</span> Olive Oil</h2>
                 <p className="text-3xl text-center text-black max-w-6xl">
                     Rooted in sunlit groves and timeless craft, we press not just olives but stories of patience,
                     purity, and place. Each drop carries the soul of the land, untouched, unhurried, and utterly alive.
