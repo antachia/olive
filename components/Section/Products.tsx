@@ -7,7 +7,7 @@ import Button from "../UI/Button"
 
 const Products = () => {
   return (
-    <section id="products" className="min-h-screen w-screen flex flex-col items-center justify-center bg-white relative py-20 rounded-b-[4rem]">
+    <section id="products" className="min-h-screen w-screen flex flex-col items-center justify-center bg-white z-10 relative py-20 rounded-b-[4rem]">
       {/* Top decorative wave */}
       <div className="absolute top-0 left-0 w-full">
         <svg className="w-full h-24" viewBox="0 0 1200 100" preserveAspectRatio="none">
