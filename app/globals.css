@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@font-face {
+  font-family: "PPEditorialNew-Regular";
+  src: url("/fonts/PPEditorialNew-Regular-BF644b214ff145f.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PPEditorialNew-Ultrabold";
+  src: url("/fonts/PPEditorialNew-Ultrabold-BF644b21500840c.otf")
+    format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PPEditorialNew-Italic";
+  src: url("/fonts/PPEditorialNew-Italic-BF644b214fb0c0a.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PPEditorialNew-Ultralight";
+  src: url("/fonts/PPEditorialNew-Ultralight-BF644b21500d0c0.otf")
+    format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SuisseIntl-Light";
+  src: url("/fonts/Suisse/fonnts.com-SuisseIntl-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SuisseIntl-Bold";
+  src: url("/fonts/Suisse/fonnts.com-Suisse_Intl_Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SuisseIntl-Book";
+  src: url("/fonts/Suisse/fonnts.com-Suisse_Intl_Book.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SuisseIntl-Medium";
+  src: url("/fonts/Suisse/fonnts.com-Suisse_Intl_Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SuisseIntl-Mono";
+  src: url("/fonts/Suisse/fonnts.com-Suisse_Intl_Mono.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SuisseIntl-Regular";
+  src: url("/fonts/Suisse/fonnts.com-Suisse_Intl_Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-primary: #c59968;
+  --color-secondary: #272d0f;
+}
+
