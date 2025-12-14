@@ -5,6 +5,10 @@
   --foreground: #171717;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 @font-face {
   font-family: "PPEditorialNew-Regular";
   src: url("/fonts/PPEditorialNew-Regular-BF644b214ff145f.otf")
@@ -85,5 +89,6 @@
 @theme {
   --color-primary: #c59968;
   --color-secondary: #272d0f;
+  --color-accent: #8e9282;
+  --color-background: #d4d5cf;
 }
-

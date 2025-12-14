@@ -1,13 +1,10 @@
-
-"use client"
 import Image from "next/image"
-import { Canvas } from "@react-three/fiber"
-import Scene from "@/components/UI/Scene"
 import Button from "../UI/Button"
+import AboutCard from "../UI/AboutCard"
 
 const Process = () => {
     return (
-        <section id="process" className="min-h-screen w-screen flex items-center justify-center bg-white relative overflow-hidden">
+        <section id="process" className="h-[150vh] w-screen flex items-center justify-center bg-background relative overflow-hidden z-0">
             {/* Background decorative lines */}
             <div className="absolute inset-0 pointer-events-none">
                 <svg className="absolute top-0 left-0 w-full h-full opacity-30" viewBox="0 0 1200 800">
@@ -18,9 +15,25 @@ const Process = () => {
                 </svg>
             </div>
 
+            <AboutCard
+                className="absolute top-15 right-[5%] rotate-6"
+                header="Harvesting"
+                description="Olives are carefully harvested at peak ripeness to preserve flavor, aroma, and nutritional value." />
+            <AboutCard
+                className="absolute top-1/4 left-[10%]"
+                header="Sorting"
+                description="Freshly harvested olives are sorted to remove leaves, stems, and any damaged fruit." />
+            <AboutCard
+                className="absolute bottom-30 left-[5%] rotate-6"
+                header="Curing &Fermentation"
+                description="Olives undergo controlled curing and natural fermentation to reduce bitterness and develop complexity." />
+            <AboutCard
+                className="absolute bottom-1/4 right-[5%] -rotate-6"
+                header="Grading"
+                description="Olives and oils are graded to meet strict standards, guaranteeing excellence in every batch." />
+
             {/* Top Left - Harvesting */}
-            <div className="absolute top-20 left-[15%] text-center">
-                <h3 className="text-2xl font-[PPEditorialNew] mb-4 text-[#6b6b4f] tracking-wider">HARVESTING</h3>
+            <div className="absolute top-20 left-[17%] text-center">
                 <Image
                     src="/imgs/harvesting.webp"
                     alt="Harvesting"
@@ -30,9 +43,8 @@ const Process = () => {
                 />
             </div>
 
-            {/* Top Right - Sorting */}
+            {/* 
             <div className="absolute top-20 right-[15%] text-center">
-                <h3 className="text-2xl font-[PPEditorialNew] mb-4 text-[#6b6b4f] tracking-wider">SORTING</h3>
                 <Image
                     src="/imgs/sorting.webp"
                     alt="Sorting"
@@ -40,28 +52,10 @@ const Process = () => {
                     height={200}
                     className="opacity-80"
                 />
-            </div>
+            </div> */}
 
-            {/* Center - House and 3D Bottle */}
-            <div className="relative z-10">
-                <Image
-                    src="/imgs/home.webp"
-                    alt="Production House"
-                    width={600}
-                    height={400}
-                    className="opacity-70"
-                />
-            </div>
-            {/* 3D Wine Bottle overlay */}
-            <div className="absolute inset-0 w-screen h-[70vh] top-1/2 -translate-y-1/2">
-                <Canvas>
-                    <Scene animate={true} animationType="floating" />
-                </Canvas>
-            </div>
 
-            {/* Bottom Left - Curing & Fermentation */}
-            <div className="absolute bottom-20 left-[15%] text-center">
-                <h3 className="text-xl font-[PPEditorialNew] mb-4 text-[#6b6b4f] tracking-wider">CURING &<br />FERMENTATION</h3>
+            {/* <div className="absolute bottom-20 left-[15%] text-center">
                 <Image
                     src="/imgs/curing.webp"
                     alt="Curing & Fermentation"
@@ -71,9 +65,7 @@ const Process = () => {
                 />
             </div>
 
-            {/* Bottom Right - Grading */}
             <div className="absolute bottom-20 right-[15%] text-center">
-                <h3 className="text-2xl font-[PPEditorialNew] mb-4 text-[#6b6b4f] tracking-wider">GRADING</h3>
                 <Image
                     src="/imgs/grading.webp"
                     alt="Grading"
@@ -81,12 +73,12 @@ const Process = () => {
                     height={200}
                     className="opacity-80"
                 />
-            </div>
+            </div> */}
 
             {/* Bottom Center - More Info */}
             <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center">
                 <p className="text-black font-[PPEditorialNew-Ultralight] mb-4 text-lg">More on our official Blog !</p>
-                <Button text="Blog" className="border-primary text-primary hover:bg-primary hover:text-white"/>
+                <Button text="Blog" className="border-primary text-primary hover:bg-primary hover:text-white" />
             </div>
         </section>
     )
