@@ -37,11 +37,12 @@ export function Bottle() {
             scrollTrigger: {
                 trigger: 'body',
                 start: 'top top',
-                end: 'bottom bottom',
+                endTrigger: '#products',
+                end: 'top top',
                 scrub: true,
             },
         })
-        tl.fromTo(group?.position,
+        tl.fromTo(group.position,
             {
                 x: 0,
                 y: -50,
@@ -50,16 +51,11 @@ export function Bottle() {
             x: 0,
             y: -1,
             z: 0,
-        }).fromTo(group?.rotation,
+        }).fromTo(group.rotation,
             {
                 z: Math.PI
             }, {
             z: 0,
-        }, 0).fromTo(spin?.rotation,
-            {
-                y: "90deg",
-            }, {
-            y: 0,
         }, 0).to(spin?.rotation,
             {
                 z: 0.2,
@@ -68,16 +64,17 @@ export function Bottle() {
                 {
                     z: 0,
                     y: 0,
-                }).to(spin?.rotation,
+                }).fromTo(spin?.rotation,
                     {
-                        z: - 0.2,
-                        y: - 3,
-                    })
-            .to(spin?.rotation,
-                {
-                    z: 0,
+                        y: "90deg",
+                    }, {
                     y: 0,
-                })
+                }, 0)
+
+        return () => {
+            tl.scrollTrigger?.kill()
+            tl.kill()
+        }
     },)
 
     return (
