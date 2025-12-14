@@ -16,7 +16,7 @@ const Process = () => {
             </div>
 
             <AboutCard
-                className="absolute top-15 right-[5%] rotate-6"
+                className="absolute top-24 right-[5%] rotate-6"
                 header="Harvesting"
                 description="Olives are carefully harvested at peak ripeness to preserve flavor, aroma, and nutritional value." />
             <AboutCard
@@ -25,7 +25,7 @@ const Process = () => {
                 description="Freshly harvested olives are sorted to remove leaves, stems, and any damaged fruit." />
             <AboutCard
                 className="absolute bottom-30 left-[5%] rotate-6"
-                header="Curing &Fermentation"
+                header="Curing & Fermentation"
                 description="Olives undergo controlled curing and natural fermentation to reduce bitterness and develop complexity." />
             <AboutCard
                 className="absolute bottom-1/4 right-[5%] -rotate-6"
@@ -35,7 +35,7 @@ const Process = () => {
             {/* Top Left - Harvesting */}
             <div className="absolute top-20 left-[17%] text-center">
                 <Image
-                    src="/imgs/harvesting.webp"
+                    src="/imgs/home.webp"
                     alt="Harvesting"
                     width={300}
                     height={200}
@@ -43,27 +43,6 @@ const Process = () => {
                 />
             </div>
 
-            {/* 
-            <div className="absolute top-20 right-[15%] text-center">
-                <Image
-                    src="/imgs/sorting.webp"
-                    alt="Sorting"
-                    width={300}
-                    height={200}
-                    className="opacity-80"
-                />
-            </div> */}
-
-
-            {/* <div className="absolute bottom-20 left-[15%] text-center">
-                <Image
-                    src="/imgs/curing.webp"
-                    alt="Curing & Fermentation"
-                    width={280}
-                    height={200}
-                    className="opacity-80"
-                />
-            </div>
 
             <div className="absolute bottom-20 right-[15%] text-center">
                 <Image
@@ -73,7 +52,7 @@ const Process = () => {
                     height={200}
                     className="opacity-80"
                 />
-            </div> */}
+            </div> 
 
             {/* Bottom Center - More Info */}
             <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center">

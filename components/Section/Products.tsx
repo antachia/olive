@@ -64,14 +64,6 @@ const Products = () => {
         Nothing dressed up just honest oil, in its truest form.
       </p>
 
-      {/* Bottles Container */}
-      <div className="relative w-full max-w-6xl h-[400px] flex items-end justify-center gap-8">
-        {/* Decorative wave line behind bottles */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1200 500">
-          <path d="M0,250 Q200,200 400,250 T800,250 T1200,250" stroke="#b5a876" strokeWidth="2" fill="none" opacity="0.4" />
-        </svg>
-      </div>
-
       {/* Bottom text and button */}
       <div className="mt-16 text-center">
         <p className="text-black font-[PPEditorialNew-Ultralight] text-lg mb-4">Click below to see full details</p>

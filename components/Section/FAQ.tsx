@@ -59,7 +59,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="w-full px-4 lg:px-24 py-24 bg-white rounded-t-[4rem] relative -mt-16">
+    <section className="w-full px-4 lg:px-24 py-24 bg-background rounded-t-[4rem] relative -mt-16">
 
       <div className="w-full mx-auto px-4 max-w-6xl">
         <h2 className="text-5xl md:text-6xl font-suisse-bold mb-8 font-[SuisseIntl]">

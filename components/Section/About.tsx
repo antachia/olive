@@ -50,8 +50,8 @@ const About = () => {
         <section ref={sectionRef} id="about" className="min-h-[85dvh] w-screen relative flex items-center justify-center bg-background overflow-x-clip rounded-t-[4rem] -mt-12 pt-12">
             <AboutSVG />
             <div className="max-w-7xl flex flex-col justify-center items-center font-[PPEditorialNew-Ultralight] relative z-10">
-                <h2 className="text-7xl font-bold text-black mb-4 uppercase text-center  mix-blend-difference">Behold <span className="text-primary font-[PPEditorialNew-Italic]">Antachia</span> Olive Oil</h2>
-                <p className="text-3xl text-center text-black max-w-6xl">
+                <h2 className="text-7xl font-bold text-white mb-4 uppercase text-center  mix-blend-difference">Behold Antachia <span className="text-primary font-[PPEditorialNew-Italic]">Olive</span>  Oil</h2>
+                <p className="text-3xl text-center text-secondary max-w-6xl">
                     Rooted in sunlit groves and timeless craft, we press not just olives but stories of patience,
                     purity, and place. Each drop carries the soul of the land, untouched, unhurried, and utterly alive.
                 </p>

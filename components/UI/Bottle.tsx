@@ -82,7 +82,7 @@ export function Bottle() {
 
     return (
         <group ref={groupRef} position={initialPosition}>
-            <group ref={groupRefSpin} scale={5}>
+            <group ref={groupRefSpin} scale={4}>
                 <mesh
                     castShadow
                     receiveShadow
