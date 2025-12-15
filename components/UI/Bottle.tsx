@@ -64,7 +64,11 @@ export function Bottle() {
                 {
                     z: 0,
                     y: 0,
-                }).fromTo(spin?.rotation,
+                }).fromTo(group.position, {
+                    z: 2,
+                }, {
+                    z: 0,
+                }, 0).fromTo(spin?.rotation,
                     {
                         y: "90deg",
                     }, {

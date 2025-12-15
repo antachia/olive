@@ -49,7 +49,12 @@ export function RightBottle() {
             x: 0,
             y: -1,
             z: 0,
-        })
+        }).fromTo(group.rotation,
+            {
+                z: - Math.PI
+            }, {
+            z: 0,
+        }, 0)
 
         return () => {
             tl.scrollTrigger?.kill()
