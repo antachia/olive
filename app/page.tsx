@@ -5,6 +5,7 @@ import Landing from "@/components/Section/Landing";
 import Process from "@/components/Section/Process";
 import Products from "@/components/Section/Products";
 import Scene from "@/components/UI/Scene";
+import PreloaderGate from "@/components/Utilities/PreloaderGate";
 
 function getBaseUrl() {
   const raw = process.env.NEXT_PUBLIC_SITE_URL
@@ -24,18 +25,20 @@ export default function Home() {
   }
 
   return (
-    <main>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <Scene />
-      <Landing />
-      <About />
-      <Process />
-      <Products />
-      <Contact />
-      <FAQ />
-    </main>
+    <PreloaderGate>
+      <main>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <Scene />
+        <Landing />
+        <About />
+        <Process />
+        <Products />
+        <Contact />
+        <FAQ />
+      </main>
+    </PreloaderGate>
   );
 }
