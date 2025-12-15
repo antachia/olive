@@ -11,7 +11,7 @@ const Landing = () => {
         </RevealText>
 
         <RevealText split="words">
-          <p className="text-white font-[PPEditorialNew-Ultralight] text-3xl">Olives and oils that carry the spirit of time, rooted, aged and rich with character.</p>
+          <p className="text-white font-[PPEditorialNew-Ultralight] text-3xl">Olive oil from Ethiopia that carries the spirit of time — rooted, aged and rich with character.</p>
         </RevealText>
 
         <RevealText split="words">
