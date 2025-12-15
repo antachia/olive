@@ -62,7 +62,7 @@ const Scene = () => {
   }, [])
 
   return (
-    <div ref={wrapperRef} className="bottle_scene z-20 pointer-events-none gap-6 flex justify-center items-center">
+    <div ref={wrapperRef} className="bottle_scene z-20 will-change-transform pointer-events-none gap-6 flex justify-center items-center">
       <Canvas
         shadows
         camera={{ position: [0, 0, 6], fov: 40 }}
