@@ -53,7 +53,7 @@ const Products = () => {
 
       <div className="mb-4 flex flex-col items-center relative z-10">
         <Image src="/imgs/jug.webp" alt="Olive" width={120} height={120} />
-        <h2 className="text-5xl font-[PPEditorialNew] text-primary mb-4 font-mend">Our Bottles</h2>
+        <h2 className="text-5xl text-primary mb-4 font-mend">Our Bottles</h2>
       </div>
 
       <p className="text-center font-[PPEditorialNew-Ultralight] text-secondary text-2xl max-w-xl mb-16 leading-relaxed relative z-10">

@@ -14,7 +14,7 @@ const Footer = () => {
         {/* Left Section - Logo and Newsletter */}
         <div className="flex flex-col gap-8">
           {/* Logo */}
-          <h2 className="text-6xl font-[PPEditorialNew] uppercase font-mend">Antachia</h2>
+          <h2 className="text-6xl uppercase font-mend">Antachia</h2>
           
           {/* Newsletter */}
           <div className="mt-8">
