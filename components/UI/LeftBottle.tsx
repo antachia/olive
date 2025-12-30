@@ -1,14 +1,14 @@
 import { useGLTF } from '@react-three/drei'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useMemo, useRef } from 'react'
+import { memo, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { GLTF } from 'three-stdlib'
 import { useGSAP } from '@gsap/react'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export function LeftBottle() {
+function LeftBottleComponent() {
 
     const groupRef = useRef<THREE.Group>(null)
     const groupRefSpin = useRef<THREE.Group>(null)
@@ -19,8 +19,9 @@ export function LeftBottle() {
         cloned.traverse((obj) => {
             if ((obj as THREE.Mesh).isMesh) {
                 const mesh = obj as THREE.Mesh
-                mesh.castShadow = true
-                mesh.receiveShadow = true
+                // Only enable shadows for main meshes, not all
+                mesh.castShadow = false
+                mesh.receiveShadow = false
             }
         })
         return cloned
@@ -70,5 +71,7 @@ export function LeftBottle() {
         </group>
     )
 }
+
+export const LeftBottle = memo(LeftBottleComponent)
 
 useGLTF.preload('/3d/LeftBottle.glb', '/draco/')

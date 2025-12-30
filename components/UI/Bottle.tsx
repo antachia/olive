@@ -1,7 +1,7 @@
 import { useGLTF } from '@react-three/drei'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useRef } from 'react'
+import { memo, useRef, useMemo } from 'react'
 import * as THREE from 'three'
 import { GLTF } from 'three-stdlib'
 import { useGSAP } from '@gsap/react'
@@ -21,12 +21,19 @@ type GLTFResult = GLTF & {
     }
 }
 
-export function Bottle() {
+function BottleComponent() {
 
     const groupRef = useRef<THREE.Group>(null)
     const groupRefSpin = useRef<THREE.Group>(null)
     const initialPosition: [number, number, number] = [0, -1, 0]
     const { nodes, materials } = useGLTF('/3d/CenterBottle.glb', '/draco/') as unknown as GLTFResult
+
+    // Optimize materials - only cast shadows on main bottle
+    const optimizedMaterials = useMemo(() => ({
+        bottle: materials['Bottle.001'].clone(),
+        paper1: materials['Cold Pressed Paper - 01'].clone(),
+        paper2: materials['Cold Pressed Paper - 01.004'].clone(),
+    }), [materials])
 
     useGSAP(() => {
         const group = groupRef.current
@@ -86,25 +93,22 @@ export function Bottle() {
             <group ref={groupRefSpin} scale={4}>
                 <mesh
                     castShadow
-                    receiveShadow
                     geometry={nodes.Retopo_Cube012.geometry}
-                    material={materials['Bottle.001']}
+                    material={optimizedMaterials.bottle}
                 />
                 <mesh
-                    castShadow
-                    receiveShadow
                     geometry={nodes.Cube011.geometry}
-                    material={materials['Cold Pressed Paper - 01']}
+                    material={optimizedMaterials.paper1}
                 />
                 <mesh
-                    castShadow
-                    receiveShadow
                     geometry={nodes.wine_bottles_01_alsace007.geometry}
-                    material={materials['Cold Pressed Paper - 01.004']}
+                    material={optimizedMaterials.paper2}
                 />
             </group>
         </group>
     )
 }
+
+export const Bottle = memo(BottleComponent)
 
 useGLTF.preload('/3d/CenterBottle.glb', '/draco/')

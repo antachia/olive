@@ -47,13 +47,13 @@ const Products = () => {
     { scope: sectionRef }
   );
   return (
-    <section ref={sectionRef} id="products" className="min-h-screen w-screen overflow-x-hidden flex flex-col items-center justify-between bg-background z-10 relative pt-10 pb-0 rounded-b-[4rem]">
+    <section ref={sectionRef} id="products" className="min-h-screen w-screen overflow-x-hidden flex flex-col items-center justify-between bg-white z-10 relative pt-10 pb-0 rounded-b-[4rem]">
 
       <OrangeSVG />
 
       <div className="mb-4 flex flex-col items-center relative z-10">
         <Image src="/imgs/jug.webp" alt="Olive" width={120} height={120} />
-        <h2 className="text-5xl font-[PPEditorialNew] text-primary mb-4">Our Bottles</h2>
+        <h2 className="text-5xl font-[PPEditorialNew] text-primary mb-4 font-mend">Our Bottles</h2>
       </div>
 
       <p className="text-center font-[PPEditorialNew-Ultralight] text-secondary text-2xl max-w-xl mb-16 leading-relaxed relative z-10">

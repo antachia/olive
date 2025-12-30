@@ -4,7 +4,7 @@ import AboutCard from "../UI/AboutCard"
 
 const Process = () => {
     return (
-        <section id="process" className="h-[150vh] w-screen flex items-center justify-center bg-background relative overflow-hidden z-0">
+        <section id="process" className="h-[150vh] w-screen flex items-center justify-center bg-white relative overflow-hidden z-0">
             {/* Background decorative lines */}
             <div className="absolute inset-0 pointer-events-none">
                 <svg className="absolute top-0 left-0 w-full h-full opacity-30" viewBox="0 0 1200 800">

@@ -4,17 +4,17 @@ import Button from "../UI/Button"
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary text-white p-20 h-[50dvh] rounded-t-[4rem] flex justify-center items-center w-full relative">
+    <footer className="bg-accent text-white p-20 h-[50dvh] rounded-t-[4rem] flex justify-center items-center w-full relative">
 
-      <div className="size-40 bg-secondary rounded-full absolute -top-20 flex justify-center items-center">
-        <Image src="/imgs/stamp.webp" alt="Logo" width={140} height={140} />
+      <div className="size-40 bg-accent rounded-full absolute -top-20 flex justify-center items-center">
+        <Image src="/imgs/antstamp.webp" alt="Logo" width={140} height={140} />
       </div>
 
       <div className="w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         {/* Left Section - Logo and Newsletter */}
         <div className="flex flex-col gap-8">
           {/* Logo */}
-          <h2 className="text-6xl font-[PPEditorialNew] uppercase">Antachia</h2>
+          <h2 className="text-6xl font-[PPEditorialNew] uppercase font-mend">Antachia</h2>
           
           {/* Newsletter */}
           <div className="mt-8">

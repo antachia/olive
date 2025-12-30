@@ -48,14 +48,14 @@ const About = () => {
 
     return (
 
-        <section ref={sectionRef} id="about" className="min-h-[85dvh] w-screen relative flex items-start justify-center bg-background overflow-x-clip rounded-t-[4rem] -mt-14 pt-44">
+        <section ref={sectionRef} id="about" className="min-h-[85dvh] w-screen relative flex items-start justify-center bg-white overflow-x-clip rounded-t-[4rem] -mt-14 pt-44">
             <AboutSVG />
-            <div className="max-w-7xl flex flex-col justify-center items-center font-[PPEditorialNew-Ultralight] relative z-10 gap-3">
+            <div className="max-w-7xl flex flex-col justify-center items-center relative z-10 gap-3">
                 <RevealText split="words">
-                    <h2 className="text-7xl pt-1 font-bold text-white uppercase text-center">Behold Antachia <span className="text-primary font-[PPEditorialNew-Italic]">Olive</span>  Oil</h2>
+                    <h2 className="text-7xl pt-1 font-bold text-black uppercase font-mend text-center">Behold Antachia <span className="text-accent font-[PPEditorialNew-Italic]">Olive</span>  Oil</h2>
                 </RevealText>
                 <RevealText split="words">
-                    <p className="text-3xl text-center text-secondary max-w-6xl">
+                    <p className="text-3xl text-center text-gray-700 max-w-6xl font-[PPEditorialNew-Ultralight]">
                         Rooted in sunlit groves and timeless craft, we press not just olives but stories of patience,
                         purity, and place. Each drop carries the soul of the land, untouched, unhurried, and utterly alive.
                     </p>

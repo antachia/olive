@@ -59,10 +59,10 @@ const FAQ = () => {
   };
 
   return (
-    <section className="w-full px-4 lg:px-24 py-24 bg-background rounded-t-[4rem] relative -mt-16">
+    <section className="w-full px-4 lg:px-24 py-24 bg-white rounded-t-[4rem] relative -mt-16">
 
       <div className="w-full mx-auto px-4 max-w-6xl">
-        <h2 className="text-5xl md:text-6xl font-suisse-bold mb-8 font-[SuisseIntl]">
+        <h2 className="text-5xl md:text-6xl font-suisse-bold mb-8 font-mend">
           FAQ
         </h2>
 
@@ -72,19 +72,19 @@ const FAQ = () => {
               <button
                 onClick={() => handleToggle(idx)}
                 aria-expanded={openIdx === idx}
-                className="w-full flex items-center justify-between py-4 group text-left"
+                className="w-full flex items-center justify-between py-4 group text-left cursor-pointer font-pp-editorial-new-thin"
               >
                 <span
-                  className={`text-lg md:text-xl transition-colors duration-200 ${openIdx === idx ? "text-[#ff6633]" : "text-black"
-                    } group-hover:text-primary font-suisse-bold cursor-pointer`}
+                  className={`text-lg md:text-xl transition-colors duration-200 ${openIdx === idx ? "" : "text-secondary"
+                    } group-hover:text-primary font-suisse-bol`}
                 >
                   {faq.question}
                 </span>
 
                 <span
                   className={`ml-4 transition-transform duration-300 ${openIdx === idx
-                    ? "rotate-45 text-primary font-suisse-bold cursor-pointer"
-                    : "text-gray-400"
+                    ? "rotate-45 text-accent"
+                    : "text-secondary"
                     }`}
                   aria-hidden
                 >

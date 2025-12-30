@@ -10,6 +10,13 @@
 }
 
 @font-face {
+  font-family: "Mend";
+  src: url("/fonts/Mend.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
   font-family: "PPEditorialNew-Regular";
   src: url("/fonts/PPEditorialNew-Regular-BF644b214ff145f.otf")
     format("opentype");
@@ -88,8 +95,20 @@
 
 @theme {
   --color-primary: #c59968;
-  --color-secondary: #272d0f;
-  --color-accent: #8e9282;
+  --color-secondary: #36544a;
+  --color-accent: #092421;
   --color-background: #d4d5cf;
   --color-brightGreen: #b5c9a1;
+
+  --font-mend: "Mend", sans-serif;
+  --font-pp-editorial-new-ultralight: "PPEditorialNew-Ultralight", sans-serif;
+  --font-pp-editorial-new-regular: "PPEditorialNew-Regular", sans-serif;
+  --font-pp-editorial-new-ultrabold: "PPEditorialNew-Ultrabold", sans-serif;
+  --font-pp-editorial-new-italic: "PPEditorialNew-Italic", sans-serif;
+  --font-suisse-intl-light: "SuisseIntl-Light", sans-serif;
+  --font-suisse-intl-bold: "SuisseIntl-Bold", sans-serif;
+  --font-suisse-intl-book: "SuisseIntl-Book", sans-serif;
+  --font-suisse-intl-medium: "SuisseIntl-Medium", sans-serif;
+  --font-suisse-intl-mono: "SuisseIntl-Mono", sans-serif;
+  --font-suisse-intl-regular: "SuisseIntl-Regular", sans-serif;
 }
