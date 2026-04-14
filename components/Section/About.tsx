@@ -1,69 +1,98 @@
 "use client"
 
-import AboutSVG from "../UI/AboutSVG"
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef } from "react";
-import RevealText from "../UI/RevealText";
+import AboutBottle from "../UI/AboutBottle"
 
-gsap.registerPlugin(ScrollTrigger);
+const pillars = [
+  {
+    id: "01",
+    text: "We don\u2019t own the land. We borrow it. Olive trees live for thousands of years. We farm with that humility. Regenerative practices, zero-waste pressing, and deep roots in the local communities.",
+  },
+  {
+    id: "02",
+    text: "Our olives trace their lineage to the ancient groves of Greece where the olive tree wasn\u2019t farmed, it was worshipped.",
+  },
+  {
+    id: "03",
+    text: "We still harvest by hand at peak bitterness, cure slowly in sea salt and time, and press cold within hours of picking. No additives. No rushing.",
+  },
+]
 
+const PillarCard = ({ id, text, className }: { id: string; text: string; className?: string }) => (
+  <div className={`relative w-full max-w-[340px] lg:max-w-[380px] ${className}`}>
+    {/* Corner brackets */}
+    <span className="absolute -top-2 -left-2 text-white text-2xl font-garamond-lt-narrow select-none">&#x250C;</span>
+    <span className="absolute -top-2 -right-2 text-white text-2xl font-garamond-lt-narrow select-none">&#x2510;</span>
+    <span className="absolute -bottom-2 -left-2 text-white text-2xl font-garamond-lt-narrow select-none">&#x2514;</span>
+    <span className="absolute -bottom-2 -right-2 text-white text-2xl font-garamond-lt-narrow select-none">&#x2518;</span>
+
+    <div
+      className="rounded-lg bg-cover bg-center px-6 py-8 sm:px-8 sm:py-10"
+      style={{ backgroundImage: "url(/images/supply/Old-Paper.png)" }}
+    >
+      {/* Number label */}
+      <p className="mb-4 font-garamond-lt-narrow text-[13px] tracking-widest text-accent/70 sm:text-[14px]">
+        [ {id} ]
+      </p>
+
+      {/* Body text */}
+      <p className="font-garamond-bd-narrow-ita text-[15px] italic leading-[1.7] text-accent/80 sm:text-[16px] lg:text-[17px]">
+        {text}
+      </p>
+    </div>
+  </div>
+)
 
 const About = () => {
-    const sectionRef = useRef<HTMLElement | null>(null);
+  return (
+    <section
+      id="about"
+      className="relative z-20 min-h-dvh w-screen overflow-hidden bg-[#d3ce6e]"
+    >
+      {/* 3D spinning bottle */}
+      <AboutBottle />
 
-    useGSAP(
-        () => {
-            const scope = sectionRef.current;
-            if (!scope) return;
+      {/* Scroll indicator — left edge */}
+      <div className="absolute left-6 top-1/2 z-20 hidden -translate-y-1/2 md:block lg:left-10">
+        <div className="flex h-11 w-11 items-center justify-center rounded-full border border-accent/30 text-accent/40">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M7 1V13M7 13L1 7M7 13L13 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </div>
 
-            const path = scope.querySelector<SVGPathElement>("#aboutVector");
-            if (!path) return;
+      {/* Main layout */}
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-6 py-20 sm:px-10 md:py-28 lg:py-32">
 
-            const length = path.getTotalLength();
-            gsap.set(path, {
-                strokeDasharray: length,
-                strokeDashoffset: length,
-            });
+        {/* Top row: Card 01 — Bottle — Card 03 */}
+        <div className="flex w-full flex-col items-center gap-8 md:flex-row md:items-start md:justify-between md:gap-6 lg:gap-10">
+          {/* Card 01 — left */}
+          <div className="flex flex-1 items-start justify-center md:justify-start md:pt-16 lg:pt-24">
+            <PillarCard id={pillars[0].id} text={pillars[0].text} />
+          </div>
 
-            const tween = gsap.to(path, {
-                strokeDashoffset: 0,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: scope,
-                    start: "top top",
-                    end: "bottom center",
-                    scrub: true,
-                },
-            });
+          {/* Bottle spacer — 3D bottle is absolutely positioned */}
+          <div className="order-first w-[140px] sm:w-[170px] md:order-0 md:w-[200px] lg:w-[220px]" />
 
-            return () => {
-                tween.scrollTrigger?.kill();
-                tween.kill();
-            };
-        },
-        { scope: sectionRef }
-    );
+          {/* Card 03 — right */}
+          <div className="flex flex-1 items-start justify-center md:justify-end md:pt-16 lg:pt-24">
+            <PillarCard id={pillars[2].id} text={pillars[2].text} />
+          </div>
+        </div>
 
-    return (
+        {/* Bottom row: Card 02 — centered */}
+        <div className="mt-8 flex w-full justify-center md:-mt-4 lg:-mt-8">
+          <PillarCard id={pillars[1].id} text={pillars[1].text} />
+        </div>
+      </div>
 
-        <section ref={sectionRef} id="about" className="min-h-[85dvh] w-screen relative flex items-start justify-center bg-white overflow-x-clip rounded-t-[4rem] -mt-14 pt-44">
-            <AboutSVG />
-            <div className="max-w-7xl flex flex-col justify-center items-center relative z-10 gap-3">
-                <RevealText split="words">
-                    <h2 className="text-7xl pt-1 font-bold text-black uppercase font-mend text-center">Behold Antachia <span className="text-accent font-[PPEditorialNew-Italic]">Olive</span>  Oil</h2>
-                </RevealText>
-                <RevealText split="words">
-                    <p className="text-3xl text-center text-gray-700 max-w-6xl font-[PPEditorialNew-Ultralight]">
-                        Rooted in sunlit groves and timeless craft, we press not just olives but stories of patience,
-                        purity, and place. Each drop carries the soul of the land, untouched, unhurried, and utterly alive.
-                    </p>
-                </RevealText>
-            </div>
-        </section>
-
-    )
+      {/* "Our Pillars" label — bottom right */}
+      <div className="absolute bottom-8 right-8 z-20 sm:bottom-10 sm:right-12 md:bottom-12 md:right-14">
+        <p className="font-garamond-lt-narrow text-[14px] tracking-widest text-accent/70 sm:text-[16px] md:text-[18px]">
+          [ Our Pillars ]
+        </p>
+      </div>
+    </section>
+  )
 }
 
 export default About

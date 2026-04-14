@@ -1,5 +1,6 @@
 import About from "@/components/Section/About";
 import Contact from "@/components/Section/Contact";
+import Delivery from "@/components/Section/Delivery";
 import FAQ from "@/components/Section/FAQ";
 import Landing from "@/components/Section/Landing";
 import Process from "@/components/Section/Process";
@@ -31,9 +32,10 @@ export default function Home() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Scene />
+        {/* <Scene /> */}
         <Landing />
         <About />
+        <Delivery />
         <Process />
         <Products />
         <Contact />
