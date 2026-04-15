@@ -1,5 +1,6 @@
 import About from "@/components/Section/About";
 import Contact from "@/components/Section/Contact";
+import Supply from "@/components/Section/Supply";
 import Delivery from "@/components/Section/Delivery";
 import FAQ from "@/components/Section/FAQ";
 import Landing from "@/components/Section/Landing";
@@ -38,6 +39,7 @@ export default function Home() {
         <Delivery />
         <Process />
         <Products />
+        <Supply />
         <Contact />
         <FAQ />
       </main>
