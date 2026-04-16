@@ -2,11 +2,8 @@
 
 import { useEffect, useRef } from "react"
 import * as THREE from "three"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useLenis } from "lenis/react"
 import { vertexShader, fragmentShader } from "@/lib/shaders"
-
-gsap.registerPlugin(ScrollTrigger)
 
 function hexToRgb(hex: string) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
@@ -22,16 +19,19 @@ function hexToRgb(hex: string) {
 const CONFIG = {
   color: "#d3ce6e",
   spread: 0.5,
+  speed: 2,
 }
 
 const TransitionCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const scrollProgressRef = useRef(0)
 
+  const lenis = useLenis()
+
   useEffect(() => {
     const canvas = canvasRef.current
-    const landing = document.getElementById("landing")
-    if (!canvas || !landing) return
+    const wrapper = canvas?.parentElement
+    if (!canvas || !wrapper) return
 
     const scene = new THREE.Scene()
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
@@ -50,7 +50,7 @@ const TransitionCanvas = () => {
       uniforms: {
         uProgress: { value: 0 },
         uResolution: {
-          value: new THREE.Vector2(landing.offsetWidth, landing.offsetHeight),
+          value: new THREE.Vector2(wrapper.offsetWidth, wrapper.offsetHeight),
         },
         uColor: { value: new THREE.Vector3(rgb.r, rgb.g, rgb.b) },
         uSpread: { value: CONFIG.spread },
@@ -62,9 +62,9 @@ const TransitionCanvas = () => {
     scene.add(mesh)
 
     function resize() {
-      if (!landing) return
-      const width = landing.offsetWidth
-      const height = landing.offsetHeight
+      if (!wrapper) return
+      const width = wrapper.offsetWidth
+      const height = wrapper.offsetHeight
       renderer.setSize(width, height)
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
       material.uniforms.uResolution.value.set(width, height)
@@ -72,16 +72,6 @@ const TransitionCanvas = () => {
 
     resize()
     window.addEventListener("resize", resize)
-
-    const trigger = ScrollTrigger.create({
-      trigger: landing,
-      start: "top top",
-      end: "bottom top",
-      scrub: true,
-      onUpdate: (self) => {
-        scrollProgressRef.current = self.progress * 1.1
-      },
-    })
 
     let animId: number
     function animate() {
@@ -93,7 +83,6 @@ const TransitionCanvas = () => {
 
     return () => {
       window.removeEventListener("resize", resize)
-      trigger.kill()
       cancelAnimationFrame(animId)
       geometry.dispose()
       material.dispose()
@@ -101,10 +90,34 @@ const TransitionCanvas = () => {
     }
   }, [])
 
+  useEffect(() => {
+    if (!lenis) return
+
+    const onScroll = ({ scroll }: { scroll: number }) => {
+      const canvas = canvasRef.current
+      const wrapper = canvas?.parentElement
+      if (!wrapper) return
+
+      const wrapperHeight = wrapper.offsetHeight
+      const windowHeight = window.innerHeight
+      const maxScroll = wrapperHeight - windowHeight
+
+      scrollProgressRef.current = Math.min(
+        (scroll / maxScroll) * CONFIG.speed,
+        1.1
+      )
+    }
+
+    lenis.on("scroll", onScroll)
+    return () => {
+      lenis.off("scroll", onScroll)
+    }
+  }, [lenis])
+
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none absolute inset-0 z-20 h-full w-full"
+      className="pointer-events-none absolute inset-0 z-10 h-full w-1/2"
     />
   )
 }

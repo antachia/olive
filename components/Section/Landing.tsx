@@ -1,17 +1,15 @@
 import Image from "next/image"
 import GlassButton from "../UI/GlassButton"
-import TransitionCanvas from "../UI/TransitionCanvas"
 
 
 const Landing = () => {
   return (
-    <>
       <section
         id="landing"
-        className="relative flex h-[130vh] w-screen flex-col justify-center bg-[url(/images/landing/Hero-Picture.jpg)] bg-cover bg-center"
+        className="absolute flex h-[125dvh] w-screen flex-col justify-center bg-[url(/images/landing/Hero-Picture.jpg)] bg-cover bg-center"
       >
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/30" />
+        {/* <div className="absolute inset-0 bg-black/30" /> */}
 
         {/* Content container */}
         <div className="relative z-10 flex w-full flex-col justify-between gap-10 px-6 sm:px-10 md:flex-row md:gap-0 md:px-14">
@@ -61,8 +59,6 @@ const Landing = () => {
           </div>
         </div>
       </section>
-      <TransitionCanvas />
-    </>
   )
 }
 

@@ -1,12 +1,10 @@
 import About from "@/components/Section/About";
 import Contact from "@/components/Section/Contact";
-import Supply from "@/components/Section/Supply";
 import Delivery from "@/components/Section/Delivery";
 import FAQ from "@/components/Section/FAQ";
 import Landing from "@/components/Section/Landing";
 import Process from "@/components/Section/Process";
-import Products from "@/components/Section/Products";
-import Scene from "@/components/UI/Scene";
+import TransitionCanvas from "@/components/UI/TransitionCanvas";
 import PreloaderGate from "@/components/Utilities/PreloaderGate";
 
 function getBaseUrl() {
@@ -33,13 +31,13 @@ export default function Home() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* <Scene /> */}
-        <Landing />
-        <About />
+        <div className="relative h-[175vh]">
+          <Landing />
+          <TransitionCanvas />
+          <About />
+        </div>
         <Delivery />
         <Process />
-        <Products />
-        <Supply />
         <Contact />
         <FAQ />
       </main>
