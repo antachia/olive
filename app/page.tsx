@@ -56,7 +56,7 @@ export default function Home() {
         <Delivery />
         <Bottles />
         <Contact />
-        <FAQ />
+        {/* <FAQ /> */}
       </main>
     </PreloaderGate>
   );
