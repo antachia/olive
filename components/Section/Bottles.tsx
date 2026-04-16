@@ -1,46 +1,21 @@
 "use client"
 
-import StaticBottle from "../UI/StaticBottle"
+import BottlesScene from "../UI/BottlesScene"
 
-const bottles = [
-  {
-    size: "500 ML",
-    scale: 4,
-    containerClass: "h-[320px] w-[220px] sm:h-[400px] sm:w-[280px] md:h-[480px] md:w-[340px] lg:h-[560px] lg:w-[400px]",
-    marginTop: "mt-10 md:mt-16 lg:mt-24",
-  },
-  {
-    size: "1 L",
-    scale: 5.2,
-    containerClass: "h-[400px] w-[280px] sm:h-[500px] sm:w-[360px] md:h-[600px] md:w-[420px] lg:h-[700px] lg:w-[500px]",
-    marginTop: "mt-0",
-  },
-  {
-    size: "250 ML",
-    scale: 3.2,
-    containerClass: "h-[260px] w-[180px] sm:h-[330px] sm:w-[230px] md:h-[400px] md:w-[280px] lg:h-[470px] lg:w-[340px]",
-    marginTop: "mt-16 md:mt-24 lg:mt-32",
-  },
+const labels = [
+  { size: "500 ML", marginTop: "mt-10 md:mt-16 lg:mt-24" },
+  { size: "1 L", marginTop: "mt-0" },
+  { size: "250 ML", marginTop: "mt-16 md:mt-24 lg:mt-32" },
 ]
 
-const BottleColumn = ({
+const BottleLabel = ({
   size,
-  scale,
-  containerClass,
   marginTop,
 }: {
   size: string
-  scale: number
-  containerClass: string
   marginTop: string
 }) => (
-  <div className={`flex flex-col items-center gap-6 ${marginTop}`}>
-    {/* 3D Bottle */}
-    <div className={`relative ${containerClass}`}>
-      <StaticBottle scale={scale} />
-    </div>
-
-    {/* Bracketed label */}
+  <div className={`flex flex-col items-center ${marginTop}`}>
     <div className="relative px-6 py-3 sm:px-8 sm:py-4">
       <span className="absolute top-0 left-0 text-white/60 text-lg sm:text-xl select-none">&#x250C;</span>
       <span className="absolute top-0 right-0 text-white/60 text-lg sm:text-xl select-none">&#x2510;</span>
@@ -79,15 +54,20 @@ const Bottles = () => {
         </h2>
       </div>
 
-      {/* Bottles row */}
-      <div className="relative z-10 mt-12 flex w-full max-w-[1440px] items-end justify-center gap-4 px-6 sm:mt-16 sm:gap-8 md:mt-20 md:gap-12 lg:mt-24 lg:gap-16">
-        {bottles.map((b) => (
-          <BottleColumn key={b.size} {...b} />
+      {/* Single Canvas with all 3 bottles */}
+      <div className="relative z-10 mt-8 h-[420px] w-full max-w-[1440px] sm:h-[500px] md:mt-12 md:h-[600px] lg:h-[700px]">
+        <BottlesScene />
+      </div>
+
+      {/* Labels row — aligned below bottle positions */}
+      <div className="relative z-10 -mt-8 flex w-full max-w-[1440px] items-start justify-around px-6 sm:-mt-10 md:-mt-14">
+        {labels.map((l) => (
+          <BottleLabel key={l.size} {...l} />
         ))}
       </div>
 
       {/* Bottom content */}
-      <div className="relative z-10 mt-16 flex flex-col items-center gap-8 px-6 pb-20 text-center sm:mt-20 sm:pb-24 md:mt-24 md:pb-28">
+      <div className="relative z-10 mt-10 flex flex-col items-center gap-8 px-6 pb-20 text-center sm:mt-14 sm:pb-24 md:mt-16 md:pb-28">
         <p className="font-garamond-bd-narrow-ita text-[15px] italic leading-[1.6] text-white/90 sm:text-[16px] md:text-[18px] lg:text-[20px]">
           Re Imagine your recipe
           <br />

@@ -73,16 +73,29 @@ const TransitionCanvas = () => {
     resize()
     window.addEventListener("resize", resize)
 
+    // Only render when canvas is in viewport
+    let inView = false
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting
+      },
+      { rootMargin: "200px" }
+    )
+    observer.observe(canvas)
+
     let animId: number
     function animate() {
-      material.uniforms.uProgress.value = scrollProgressRef.current
-      renderer.render(scene, camera)
+      if (inView) {
+        material.uniforms.uProgress.value = scrollProgressRef.current
+        renderer.render(scene, camera)
+      }
       animId = requestAnimationFrame(animate)
     }
     animate()
 
     return () => {
       window.removeEventListener("resize", resize)
+      observer.disconnect()
       cancelAnimationFrame(animId)
       geometry.dispose()
       material.dispose()

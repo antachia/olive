@@ -8,6 +8,7 @@ import { GLTF } from "three-stdlib"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
+import { useInView } from "@/hooks/useInView"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -94,9 +95,13 @@ function SpinningBottle() {
 const MemoBottle = memo(SpinningBottle)
 
 const AboutBottle = () => {
+  const wrapperRef = useRef<HTMLDivElement>(null)
+  const inView = useInView(wrapperRef)
+
   return (
-    <div className="pointer-events-none absolute inset-0 z-30">
+    <div ref={wrapperRef} className="pointer-events-none absolute inset-0 z-30">
       <Canvas
+        frameloop={inView ? "always" : "never"}
         camera={{ position: [0, 0, 5], fov: 40 }}
         dpr={[1, 1.5]}
         gl={{

@@ -5,6 +5,7 @@ import { Canvas, useFrame } from "@react-three/fiber"
 import { memo, useRef, useMemo } from "react"
 import * as THREE from "three"
 import { GLTF } from "three-stdlib"
+import { useInView } from "@/hooks/useInView"
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -61,21 +62,26 @@ function SpinningBottle() {
 const MemoBottle = memo(SpinningBottle)
 
 const ProductBottle = () => {
+  const wrapperRef = useRef<HTMLDivElement>(null)
+  const inView = useInView(wrapperRef)
+
   return (
-    <Canvas
-      camera={{ position: [0, 0, 5], fov: 40 }}
-      dpr={[1, 1.5]}
-      gl={{
-        antialias: true,
-        powerPreference: "high-performance",
-        alpha: true,
-      }}
-      style={{ background: "transparent" }}
-      className="!absolute !inset-0 !h-full !w-full"
-    >
-      <Environment preset="forest" />
-      <MemoBottle />
-    </Canvas>
+    <div ref={wrapperRef} className="absolute inset-0 h-full w-full">
+      <Canvas
+        frameloop={inView ? "always" : "never"}
+        camera={{ position: [0, 0, 5], fov: 40 }}
+        dpr={[1, 1.5]}
+        gl={{
+          antialias: true,
+          powerPreference: "high-performance",
+          alpha: true,
+        }}
+        style={{ background: "transparent" }}
+      >
+        <Environment preset="forest" />
+        <MemoBottle />
+      </Canvas>
+    </div>
   )
 }
 
