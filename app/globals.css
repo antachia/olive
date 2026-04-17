@@ -10,105 +10,43 @@
 }
 
 @font-face {
-  font-family: "Mend";
-  src: url("/fonts/Mend.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "PPEditorialNew-Regular";
-  src: url("/fonts/PPEditorialNew-Regular-BF644b214ff145f.otf")
-    format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "PPEditorialNew-Ultrabold";
-  src: url("/fonts/PPEditorialNew-Ultrabold-BF644b21500840c.otf")
-    format("opentype");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "PPEditorialNew-Italic";
-  src: url("/fonts/PPEditorialNew-Italic-BF644b214fb0c0a.otf")
-    format("opentype");
-  font-weight: 400;
+  font-family: "ITCGaramond-BdNarrowIta";
+  src: url("/fonts/ITCGaramondStd-BdNarrowIta.ttf") format("truetype");
+  font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
-  font-family: "PPEditorialNew-Ultralight";
-  src: url("/fonts/PPEditorialNew-Ultralight-BF644b21500d0c0.otf")
-    format("opentype");
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SuisseIntl-Light";
-  src: url("/fonts/Suisse/fonnts.com-SuisseIntl-Light.ttf") format("truetype");
+  font-family: "ITCGaramond-LtNarrow";
+  src: url("/fonts/ITCGaramondStd-LtNarrow.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "SuisseIntl-Bold";
-  src: url("/fonts/Suisse/fonnts.com-Suisse_Intl_Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "SuisseIntl-Book";
-  src: url("/fonts/Suisse/fonnts.com-Suisse_Intl_Book.ttf") format("truetype");
+  font-family: "MendlSerif-Regular";
+  src: url("/fonts/MendlSerif_Trial_DawnRg.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "SuisseIntl-Medium";
-  src: url("/fonts/Suisse/fonnts.com-Suisse_Intl_Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "SuisseIntl-Mono";
-  src: url("/fonts/Suisse/fonnts.com-Suisse_Intl_Mono.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "SuisseIntl-Regular";
-  src: url("/fonts/Suisse/fonnts.com-Suisse_Intl_Regular.ttf")
-    format("truetype");
-  font-weight: 400;
+  font-family: "MendlSerif-SemiBold";
+  src: url("/fonts/MendlSerif_Trial_DawnSBd.ttf") format("truetype");
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @theme {
-  --color-primary: #c59968;
+  --color-neonGreen: #d6e149;
   --color-secondary: #36544a;
   --color-accent: #092421;
   --color-background: #d4d5cf;
   --color-brightGreen: #b5c9a1;
 
-  --font-mend: "Mend", sans-serif;
-  --font-pp-editorial-new-ultralight: "PPEditorialNew-Ultralight", sans-serif;
-  --font-pp-editorial-new-regular: "PPEditorialNew-Regular", sans-serif;
-  --font-pp-editorial-new-ultrabold: "PPEditorialNew-Ultrabold", sans-serif;
-  --font-pp-editorial-new-italic: "PPEditorialNew-Italic", sans-serif;
-  --font-suisse-intl-light: "SuisseIntl-Light", sans-serif;
-  --font-suisse-intl-bold: "SuisseIntl-Bold", sans-serif;
-  --font-suisse-intl-book: "SuisseIntl-Book", sans-serif;
-  --font-suisse-intl-medium: "SuisseIntl-Medium", sans-serif;
-  --font-suisse-intl-mono: "SuisseIntl-Mono", sans-serif;
-  --font-suisse-intl-regular: "SuisseIntl-Regular", sans-serif;
+  --font-garamond-bd-narrow-ita: "ITCGaramond-BdNarrowIta", serif;
+  --font-garamond-lt-narrow: "ITCGaramond-LtNarrow", serif;
+  --font-mendl-regular: "MendlSerif-Regular", serif;
+  --font-mendl-semibold: "MendlSerif-SemiBold", serif;
 }

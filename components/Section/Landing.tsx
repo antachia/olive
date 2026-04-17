@@ -1,25 +1,62 @@
-import Button from "../UI/Button"
-import RevealText from "../UI/RevealText"
+import Image from "next/image"
+import GlassButton from "../UI/GlassButton"
+
 
 const Landing = () => {
   return (
-    <section id="landing" className="h-[110dvh] w-screen bg-[url(/imgs/landing.jpg)] bg-cover bg-center flex flex-col justify-center items-center relative">
-      <div className="bg-black/30 w-screen h-[110dvh] absolute inset-0" />
-      <div className="flex flex-col justify-center items-center relative z-10 mb-10">
-        <RevealText>
-          <h1 className="font-mend text-white leading-40 text-[11rem] uppercase text-center">Antachia</h1>
-        </RevealText>
+      <section
+        id="landing"
+        className="absolute flex h-[125dvh] w-screen flex-col justify-center pb-42 bg-[url(/images/landing/Hero-Picture.jpg)] bg-cover bg-center"
+      >
 
-        <RevealText split="words">
-          <p className="text-white font-pp-editorial-new-ultralight text-3xl">Olive oil from Ethiopia that carries the spirit of time — rooted, aged and rich with character.</p>
-        </RevealText>
+        {/* Content container */}
+        <div className="relative z-10 flex w-full flex-col justify-between gap-10 px-6 sm:px-10 md:flex-row md:gap-0 md:px-14">
+          {/* Left — Hero headline + scroll indicator */}
+          <div className="">
 
-        <RevealText split="words">
-          <p className="text-white font-pp-editorial-new-ultralight text-3xl">We bottle curated collections of a kind, well aged batch olive oils without the inflated markup.</p>
-        </RevealText>
-      </div>
-      <Button text="About Us" className="text-white border-white hover:bg-white hover:text-black relative z-30" />
-    </section>
+            <h1 className="font-extrabold font-mendl-regular text-[42px] leading-[1.05] tracking-tight text-white sm:text-[56px] md:text-[68px] lg:text-8xl">
+              From{" "}
+              <span className="font-garamond-bd-narrow-ita italic">
+                Ancient
+              </span>{" "}
+              Hills
+              <br />
+              To Modern Tables
+            </h1>
+
+            {/* Scroll down indicator */}
+            <div className="mt-8 md:mt-12">
+              <a href="#about" aria-label="Scroll down" className="inline-block transition-opacity duration-300 hover:opacity-70">
+                <Image
+                  src="/images/landing/SVG/arrow.svg"
+                  alt="Scroll down"
+                  width={35}
+                  height={180}
+                  className="h-[60px] w-auto md:h-40"
+                />
+              </a>
+            </div>
+          </div>
+
+          {/* Right — Tagline + CTA */}
+          <div className="flex flex-col md:text-right">
+
+            <p className="italic font-garamond-lt-narrow tracking-tight text-[16px]  text-white sm:text-[17px] md:text-[18px] lg:text-5xl">
+              Origin matters.
+              <br />
+              The land does the work.
+              <br />
+              We just bring it to you right.
+            </p>
+
+            <div className="mt-5">
+
+              <GlassButton text="Find Out More!" href="#about" />
+
+            </div>
+          </div>
+        </div>
+      </section>
   )
 }
 
