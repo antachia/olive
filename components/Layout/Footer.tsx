@@ -9,9 +9,9 @@ const socials = [
 
 const Footer = () => {
   return (
-    <footer className="relative w-full overflow-hidden bg-black text-white z-30">
+    <footer className="relative w-full overflow-hidden text-white z-50 bg-transparent">
       {/* Background image — 90% bottom-aligned, top 10% stays black to reveal image curve */}
-      <div className="absolute inset-x-0 -top-10 h-full">
+      <div className="absolute inset-x-0 bottom-0 h-[120%]">
         <Image
           src="/images/landing/Footer-Image.png"
           alt=""
@@ -25,9 +25,9 @@ const Footer = () => {
       <div className="absolute inset-0 bg-black/50" />
 
       {/* Wax seal / stamp — top center */}
-      <div className="relative z-10 flex justify-center pt-2">
+      <div className="relative z-10 flex justify-center pt-6">
         <Image
-          src="/images/logo/gold.webp"
+          src="/images/landing/stamp.webp"
           alt="Antachia Gold stamp"
           width={180}
           height={180}
@@ -76,7 +76,7 @@ const Footer = () => {
               href="tel:+0"
               className="font-garamond-lt-narrow text-sm uppercase tracking-widest text-white/90 transition-opacity duration-200 hover:opacity-70 sm:text-base md:text-lg"
             >
-              +0
+              +251987654523
             </a>
           </div>
 
@@ -119,19 +119,19 @@ const Footer = () => {
           <p className="mt-6 font-garamond-lt-narrow text-xs uppercase tracking-widest text-white/70 md:text-right sm:text-sm md:text-base">
             Powered by
             <br />
-            Gezat Communication<sup>&copy;</sup>
+            Gezat Communication
           </p>
         </div>
       </div>
 
       {/* Giant brand wordmark at bottom — white logo scaled full width */}
-      <div className="relative z-10 flex w-full justify-center px-4 pb-4 pt-8 md:pt-12">
+      <div className="relative z-10 flex w-full justify-center px-4 pb-4 pt-8 md:pt-1">
         <Image
           src="/images/logo/white.webp"
           alt="Antachia"
-          width={2000}
+          width={1800}
           height={400}
-          className="h-auto w-full object-contain"
+          className="h-auto w-11/12 object-contain"
           priority
         />
       </div>

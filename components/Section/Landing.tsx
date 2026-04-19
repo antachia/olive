@@ -10,7 +10,7 @@ const Landing = () => {
       >
 
         {/* overlay for mobile */}
-        <div className="w-full h-full bg-black/50 absolute inset-0 z-10"/>
+        <div className="w-full h-full bg-black/50 absolute inset-0 z-10 flex md:hidden"/>
 
         {/* Content container */}
         <div className="relative z-10 flex w-full flex-col justify-between gap-10 px-6 sm:px-10 md:flex-row md:gap-0 md:px-14">
