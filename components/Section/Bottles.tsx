@@ -1,6 +1,8 @@
 "use client"
 
 import BottlesScene from "../UI/BottlesScene"
+import BottlesSlider from "../UI/BottlesSlider"
+import PrimaryButton from "../UI/PrimaryButton"
 
 const labels = [
   { size: "500 ML", marginTop: "mt-10 md:mt-16 lg:mt-24" },
@@ -33,7 +35,7 @@ const Bottles = () => {
   return (
     <section
       id="bottles"
-      className="relative flex min-h-dvh w-screen flex-col items-center overflow-hidden"
+      className="relative flex min-h-dvh w-screen flex-col items-center overflow-hidden border-b-[1px] border-white/50 "
       style={{
         background:
           "linear-gradient(to bottom, var(--color-secondary) 0%, var(--color-secondary) 40%, #000000 100%)",
@@ -54,32 +56,32 @@ const Bottles = () => {
         </h2>
       </div>
 
-      {/* Single Canvas with all 3 bottles */}
-      <div className="relative z-10 mt-8 h-[420px] w-full max-w-[1440px] sm:h-[500px] md:mt-12 md:h-[600px] lg:h-[700px]">
+      {/* Mobile: single bottle slider with navigation */}
+      <div className="relative z-10 mt-10 flex w-full justify-center px-6 md:hidden">
+        <BottlesSlider />
+      </div>
+
+      {/* Desktop: 3 bottles in one Canvas */}
+      <div className="relative z-10 mt-8 hidden h-[420px] w-full max-w-[1440px] sm:h-[500px] md:mt-12 md:block md:h-[600px] lg:h-[700px]">
         <BottlesScene />
       </div>
 
-      {/* Labels row — aligned below bottle positions */}
-      <div className="relative z-10 -mt-8 flex w-full max-w-[1440px] items-start justify-around px-6 sm:-mt-10 md:-mt-14">
+      {/* Desktop labels row */}
+      <div className="relative z-10 -mt-8 hidden w-full max-w-[1440px] items-start justify-around px-6 sm:-mt-10 md:-mt-14 md:flex">
         {labels.map((l) => (
           <BottleLabel key={l.size} {...l} />
         ))}
       </div>
 
       {/* Bottom content */}
-      <div className="relative z-10 mt-10 flex flex-col items-center gap-8 px-6 pb-20 text-center sm:mt-14 sm:pb-24 md:mt-16 md:pb-28">
-        <p className="font-garamond-bd-narrow-ita text-[15px] italic leading-[1.6] text-white/90 sm:text-[16px] md:text-[18px] lg:text-[20px]">
+      <div className="relative z-10 mt-10 flex flex-col items-center gap-14 px-6 pb-20 text-center sm:mt-14 sm:pb-24 md:mt-16 md:pb-28">
+        <p className="font-mendl-regular text-[15px] text-white/90 sm:text-[16px] md:text-[18px] lg:text-[20px]">
           Re Imagine your recipe
           <br />
           With Antachia Olive oil !
         </p>
 
-        <a
-          href="#products"
-          className="rounded-sm bg-neonGreen px-10 py-2.5 font-garamond-lt-narrow text-[13px] tracking-wide text-accent transition-colors duration-200 hover:bg-neonGreen/80 sm:text-[14px] md:text-[15px]"
-        >
-          Shop Now
-        </a>
+        <PrimaryButton text="Shop Now" href="#products" />
       </div>
     </section>
   )

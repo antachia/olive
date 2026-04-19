@@ -9,9 +9,9 @@ const socials = [
 
 const Footer = () => {
   return (
-    <footer className="relative w-full overflow-hidden bg-black text-white">
+    <footer className="relative w-full overflow-hidden bg-black text-white z-30">
       {/* Background image — 90% bottom-aligned, top 10% stays black to reveal image curve */}
-      <div className="absolute inset-x-0 bottom-0 h-full">
+      <div className="absolute inset-x-0 -top-10 h-full">
         <Image
           src="/images/landing/Footer-Image.png"
           alt=""

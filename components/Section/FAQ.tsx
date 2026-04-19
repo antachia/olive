@@ -62,7 +62,7 @@ const FAQ = () => {
     <section className="w-full px-4 lg:px-24 py-24 bg-white rounded-t-[4rem] relative -mt-16">
 
       <div className="w-full mx-auto px-4 max-w-6xl">
-        <h2 className="text-5xl md:text-6xl font-suisse-bold mb-8 font-mend">
+        <h2 className="text-5xl md:text-6xl mb-8 font-mendl-semibold text-accent">
           FAQ
         </h2>
 
@@ -72,11 +72,11 @@ const FAQ = () => {
               <button
                 onClick={() => handleToggle(idx)}
                 aria-expanded={openIdx === idx}
-                className="w-full flex items-center justify-between py-4 group text-left cursor-pointer font-pp-editorial-new-thin"
+                className="w-full flex items-center justify-between py-4 group text-left cursor-pointer font-garamond-lt-narrow"
               >
                 <span
-                  className={`text-lg md:text-xl transition-colors duration-200 ${openIdx === idx ? "" : "text-secondary"
-                    } group-hover:text-primary font-suisse-bol`}
+                  className={`text-lg md:text-xl transition-colors duration-200 ${openIdx === idx ? "text-accent" : "text-secondary"
+                    } group-hover:text-neonGreen font-mendl-regular`}
                 >
                   {faq.question}
                 </span>
@@ -113,7 +113,7 @@ const FAQ = () => {
 
               <div
                 className={`transition-all duration-500 ease-in-out overflow-hidden ${openIdx === idx ? "max-h-[500px] opacity-100 py-4" : "max-h-0 opacity-0 py-0"
-                  } text-base text-gray-600 font-suisse-regular`}
+                  } text-base text-gray-600 font-garamond-lt-narrow`}
               >
                 {faq.answer.split("\n").map((line, i) => (
                   <div key={i} className="mb-1">

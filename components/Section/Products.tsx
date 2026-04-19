@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { useState } from "react"
 import ProductBottle from "../UI/ProductBottle"
-import GlassButton from "../UI/GlassButton"
+import PrimaryButton from "../UI/PrimaryButton"
 
 const volumes = ["250 ML", "500 ML", "1 Liter"] as const
 
@@ -42,10 +42,10 @@ const Products = () => {
           <h3 className="font-mendl-regular text-[18px] text-accent sm:text-[20px]">
             Product Description
           </h3>
-          <GlassButton
+          <PrimaryButton
             text="Shop Now"
             href="#contact"
-            className="!border-neonGreen !bg-neonGreen !text-accent hover:!bg-neonGreen/80"
+            className="text-accent"
           />
         </div>
 

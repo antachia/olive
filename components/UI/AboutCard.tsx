@@ -14,12 +14,12 @@ const AboutCard = ({ className, header, description }: { className?: string, hea
             </div>
 
             {/* Title */}
-            <h2 className="mb-12 text-5xl uppercase font-mend font-extrabold text-white">
+            <h2 className="mb-12 text-5xl uppercase font-mendl-semibold text-white">
                 {header}
             </h2>
 
             {/* Description */}
-            <p className="mx-auto px-6 text-white text-xl font-[PPEditorialNew-Ultralight]">
+            <p className="mx-auto px-6 text-white text-xl font-garamond-lt-narrow">
                 {description}
             </p>
         </div>

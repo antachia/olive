@@ -1,6 +1,6 @@
 "use client"
 
-import { useGLTF, Environment } from "@react-three/drei"
+import { useGLTF } from "@react-three/drei"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { memo, useRef, useMemo } from "react"
 import * as THREE from "three"
@@ -9,6 +9,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
 import { useInView } from "@/hooks/useInView"
+import RoomLighting from "./RoomLighting"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -111,7 +112,9 @@ const AboutBottle = () => {
         }}
         style={{ background: "transparent" }}
       >
-        <Environment preset="forest" />
+        <RoomLighting intensity={1} />
+        <directionalLight position={[5, 8, 5]} intensity={1.2} />
+        <directionalLight position={[-5, 3, -5]} intensity={0.4} />
         <MemoBottle />
       </Canvas>
     </div>

@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useState } from "react"
+import PrimaryButton from "../UI/PrimaryButton"
 
 const Supply = () => {
   const [form, setForm] = useState({
@@ -149,12 +150,11 @@ const Supply = () => {
 
               {/* Submit */}
               <div className="mt-2">
-                <button
+                <PrimaryButton
+                  text="Request"
                   type="submit"
-                  className="cursor-pointer rounded-sm bg-neonGreen px-10 py-2.5 font-garamond-lt-narrow text-[13px] font-bold uppercase tracking-widest text-accent transition-colors duration-200 hover:bg-neonGreen/80 sm:text-[14px]"
-                >
-                  Request
-                </button>
+                  className="uppercase tracking-widest text-accent"
+                />
               </div>
             </form>
           </div>

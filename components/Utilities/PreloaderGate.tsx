@@ -69,13 +69,13 @@ export default function PreloaderGate({ children, assets }: PreloaderGateProps) 
     <div className="fixed inset-0 z-100 flex items-center justify-center bg-background">
       <div className="flex flex-col items-center gap-3">
         <div
-          className="text-primary font-[PPEditorialNew] text-6xl tabular-nums"
+          className="text-accent font-mendl-semibold text-6xl tabular-nums"
           aria-label={`Loading ${display} percent`}
           aria-live="polite"
         >
           {display}
         </div>
-        <div className="text-secondary font-[PPEditorialNew-Ultralight] text-lg">
+        <div className="text-secondary font-garamond-lt-narrow text-lg">
           Loading
         </div>
       </div>

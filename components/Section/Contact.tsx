@@ -5,6 +5,7 @@ import { useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
+import PrimaryButton from "../UI/PrimaryButton"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -86,19 +87,18 @@ const Contact = () => {
           Our <span className="text-neonGreen">Oil</span>
         </h2>
 
-        <p className="mt-10 w-full md:w-2xl font-garamond-bd-narrow-ita text-[15px] text-white sm:text-[16px] md:mt-14 md:text-[17px] lg:text-2xl">
+        <p className="mt-10 w-full md:w-2xl font-garamond-bd-narrow-ita font-light text-xl text-white md:mt-14 lg:text-2xl">
           Partner for wholesale, request samples, or explore collaboration
           opportunities. We focus on practical value, not noise products that
           move and make sense. Whether you&apos;re scaling or testing, we keep the
           process straightforward.
         </p>
 
-        <a
+        <PrimaryButton
+          text="Reach out"
           href="/supply"
-          className="mt-10 rounded-md bg-neonGreen px-10 py-2.5 font-garamond-lt-narrow text-[14px] tracking-wide text-accent transition-colors duration-200 hover:bg-neonGreen/80 sm:text-[15px] md:mt-14 md:px-12 md:py-3 md:text-[16px]"
-        >
-          Reach out
-        </a>
+          className="mt-10 text-accent md:mt-14"
+        />
       </div>
     </section>
   )
