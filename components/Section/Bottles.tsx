@@ -35,7 +35,7 @@ const Bottles = () => {
   return (
     <section
       id="bottles"
-      className="relative flex min-h-dvh w-screen flex-col items-center overflow-hidden border-b-[1px] border-white/50 "
+      className="relative flex md:min-h-dvh w-screen flex-col items-center overflow-hidden"
       style={{
         background:
           "linear-gradient(to bottom, var(--color-secondary) 0%, var(--color-secondary) 40%, #000000 100%)",
@@ -46,7 +46,7 @@ const Bottles = () => {
       <div className="absolute right-10 top-0 h-full w-px bg-white/50" />
 
       {/* Heading */}
-      <div className="relative z-10 px-6 pt-20 text-center sm:pt-24 md:pt-28 lg:pt-32">
+      <div className="relative z-10 px-6 text-center md:pt-28 lg:pt-32">
         <h2 className="font-mendl-regular text-[48px] leading-[1.05] text-white sm:text-[64px] md:text-[80px] lg:text-[100px] xl:text-[120px]">
           In{" "}
           <span className="font-mendl-semibold text-neonGreen">Different</span>
@@ -83,6 +83,9 @@ const Bottles = () => {
 
         <PrimaryButton text="Shop Now" href="#products" />
       </div>
+
+      <div className="w-full h-px bg-white/50 absolute bottom-0" />
+
     </section>
   )
 }

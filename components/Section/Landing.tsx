@@ -9,12 +9,15 @@ const Landing = () => {
         className="absolute flex h-[125dvh] w-screen flex-col justify-center pb-42 bg-[url(/images/landing/Hero-Picture.jpg)] bg-cover bg-center"
       >
 
+        {/* overlay for mobile */}
+        <div className="w-full h-full bg-black/50 absolute inset-0 z-10"/>
+
         {/* Content container */}
         <div className="relative z-10 flex w-full flex-col justify-between gap-10 px-6 sm:px-10 md:flex-row md:gap-0 md:px-14">
           {/* Left — Hero headline + scroll indicator */}
           <div className="">
 
-            <h1 className="font-extrabold font-mendl-regular text-[42px] leading-[1.05] tracking-tight text-white sm:text-[56px] md:text-[68px] lg:text-8xl">
+            <h1 className="font-extrabold font-mendl-regular text-[50px] leading-[1.05] tracking-tight text-white sm:text-[56px] md:text-[68px] lg:text-8xl">
               From{" "}
               <span className="font-garamond-bd-narrow-ita italic">
                 Ancient
@@ -32,7 +35,7 @@ const Landing = () => {
                   alt="Scroll down"
                   width={35}
                   height={180}
-                  className="h-[60px] w-auto md:h-40"
+                  className="h-[120px] w-auto md:h-40"
                 />
               </a>
             </div>
@@ -41,7 +44,7 @@ const Landing = () => {
           {/* Right — Tagline + CTA */}
           <div className="flex flex-col md:text-right">
 
-            <p className="italic font-garamond-lt-narrow tracking-tight text-[16px]  text-white sm:text-[17px] md:text-[18px] lg:text-5xl">
+            <p className="italic font-garamond-lt-narrow tracking-tight text-white text-2xl  md:text-[18px] lg:text-5xl">
               Origin matters.
               <br />
               The land does the work.

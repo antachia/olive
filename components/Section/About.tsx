@@ -63,7 +63,7 @@ const About = () => {
     <section
       ref={sectionRef}
       id="about"
-      className="absolute bottom-0 z-20 h-[125vh] w-screen overflow-hidden flex items-center justify-center"
+      className="absolute bottom-0 z-20 h-[150dvh] md:h-[125vh] w-screen overflow-hidden flex items-center justify-center"
     >
       {/* 3D spinning bottle */}
       <AboutBottle />
@@ -78,7 +78,7 @@ const About = () => {
       </div>
 
       {/* Main layout */}
-      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col items-center px-6">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col items-center px-6 py-12">
 
         {/* Top row: Card 01 — Bottle — Card 03 */}
         <div className="pt-20 flex w-full flex-col items-center gap-8 md:flex-row md:items-start md:justify-between md:gap-6 lg:gap-20">
@@ -97,7 +97,7 @@ const About = () => {
         </div>
 
 
-        <div className="pt-20 flex w-full flex-col items-center gap-8 md:flex-row md:items-start md:justify-between md:gap-6 lg:gap-20">
+        <div className="md:pt-20 flex w-full flex-col items-center gap-8 md:flex-row md:items-start md:justify-between md:gap-6 lg:gap-20">
 
           <div className="order-first w-[140px] sm:w-[170px] md:order-0 md:w-[200px] lg:w-[220px]" />
 
@@ -112,7 +112,7 @@ const About = () => {
       </div>
 
       {/* "Our Pillars" label — bottom right */}
-      <div className="absolute bottom-8 right-8 z-20 sm:bottom-10 sm:right-12 md:bottom-12 md:right-14">
+      <div className="absolute bottom-12 right-8 z-20 sm:bottom-10 sm:right-12 md:right-14">
         <p className="font-garamond-lt-narrow text-[14px] tracking-widest text-accent/70 sm:text-[16px] md:text-[18px]">
           [ Our Pillars ]
         </p>

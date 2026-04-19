@@ -100,7 +100,7 @@ const AboutBottle = () => {
   const inView = useInView(wrapperRef)
 
   return (
-    <div ref={wrapperRef} className="pointer-events-none absolute inset-0 z-30">
+    <div ref={wrapperRef} className="pointer-events-none absolute inset-0 z-30 hidden md:flex">
       <Canvas
         frameloop={inView ? "always" : "never"}
         camera={{ position: [0, 0, 5], fov: 40 }}

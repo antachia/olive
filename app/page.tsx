@@ -45,7 +45,7 @@ export default function Home() {
               alt="Antachia stamp"
               width={170}
               height={170}
-              className="h-[50px] w-[50px] sm:h-[60px] sm:w-[60px] md:h-[170px] md:w-[170px]"
+              className="hidden md:flex md:h-[170px] md:w-[170px]"
             />
           </div>
 
