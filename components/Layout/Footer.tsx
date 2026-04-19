@@ -21,6 +21,9 @@ const Footer = () => {
         />
       </div>
 
+      {/* Dark overlay for text legibility */}
+      <div className="absolute inset-0 bg-black/50" />
+
       {/* Wax seal / stamp — top center */}
       <div className="relative z-10 flex justify-center pt-2">
         <Image
@@ -45,16 +48,16 @@ const Footer = () => {
           />
 
           <div className="w-full max-w-[320px]">
-            <p className="mb-4 font-garamond-lt-narrow text-[13px] uppercase tracking-widest text-white sm:text-[14px]">
+            <p className="mb-4 font-garamond-lt-narrow text-sm uppercase tracking-widest text-white sm:text-base md:text-lg">
               Subscribe to Newsletter
             </p>
             <div className="flex items-center border-b border-white/60 pb-2">
-              <span className="w-full font-garamond-lt-narrow text-[13px] uppercase tracking-widest text-white/60">
+              <span className="w-full font-garamond-lt-narrow text-sm uppercase tracking-widest text-white/70 sm:text-base md:text-lg">
                 Email
               </span>
               <a
                 href="/supply"
-                className="flex items-center gap-2 font-garamond-lt-narrow text-[13px] uppercase tracking-widest text-neonGreen transition-opacity duration-200 hover:opacity-80"
+                className="flex items-center gap-2 font-garamond-lt-narrow text-sm uppercase tracking-widest text-neonGreen transition-opacity duration-200 hover:opacity-80 sm:text-base md:text-lg"
               >
                 Go
                 <span aria-hidden>&#9654;</span>
@@ -66,33 +69,33 @@ const Footer = () => {
         {/* Center — Contact info */}
         <div className="flex flex-col items-start gap-6 md:items-center">
           <div className="md:text-center">
-            <p className="font-garamond-lt-narrow text-[13px] uppercase tracking-widest text-white sm:text-[14px]">
+            <p className="font-garamond-lt-narrow text-sm uppercase tracking-widest text-white sm:text-base md:text-lg">
               Phone
             </p>
             <a
               href="tel:+0"
-              className="font-garamond-lt-narrow text-[13px] uppercase tracking-widest text-white/80 transition-opacity duration-200 hover:opacity-70 sm:text-[14px]"
+              className="font-garamond-lt-narrow text-sm uppercase tracking-widest text-white/90 transition-opacity duration-200 hover:opacity-70 sm:text-base md:text-lg"
             >
               +0
             </a>
           </div>
 
           <div className="md:text-center">
-            <p className="font-garamond-lt-narrow text-[13px] uppercase tracking-widest text-white sm:text-[14px]">
+            <p className="font-garamond-lt-narrow text-sm uppercase tracking-widest text-white sm:text-base md:text-lg">
               Based In
             </p>
-            <p className="font-garamond-lt-narrow text-[13px] uppercase tracking-widest text-white/80 sm:text-[14px]">
+            <p className="font-garamond-lt-narrow text-sm uppercase tracking-widest text-white/90 sm:text-base md:text-lg">
               Ankara, Turkey
             </p>
           </div>
 
           <div className="md:text-center">
-            <p className="font-garamond-lt-narrow text-[13px] uppercase tracking-widest text-white sm:text-[14px]">
+            <p className="font-garamond-lt-narrow text-sm uppercase tracking-widest text-white sm:text-base md:text-lg">
               Email
             </p>
             <a
               href="mailto:antachia@gmail.com"
-              className="font-garamond-lt-narrow text-[13px] uppercase tracking-widest text-white/80 transition-opacity duration-200 hover:opacity-70 sm:text-[14px]"
+              className="font-garamond-lt-narrow text-sm uppercase tracking-widest text-white/90 transition-opacity duration-200 hover:opacity-70 sm:text-base md:text-lg"
             >
               antachia@gmail.com
             </a>
@@ -107,13 +110,13 @@ const Footer = () => {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-garamond-lt-narrow text-[13px] uppercase tracking-widest text-white transition-opacity duration-200 hover:opacity-70 sm:text-[14px]"
+              className="font-garamond-lt-narrow text-sm uppercase tracking-widest text-white transition-opacity duration-200 hover:opacity-70 sm:text-base md:text-lg"
             >
               {s.name}
             </a>
           ))}
 
-          <p className="mt-6 font-garamond-lt-narrow text-[10px] uppercase tracking-widest text-white/50 md:text-right sm:text-[11px]">
+          <p className="mt-6 font-garamond-lt-narrow text-xs uppercase tracking-widest text-white/70 md:text-right sm:text-sm md:text-base">
             Powered by
             <br />
             Gezat Communication<sup>&copy;</sup>

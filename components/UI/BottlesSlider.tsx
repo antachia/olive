@@ -40,7 +40,7 @@ const BottlesSlider = () => {
   return (
     <div className="flex w-full flex-col items-center">
       {/* Canvas — single bottle, drag to rotate */}
-      <div className="h-[360px] w-full max-w-[400px] sm:h-[440px]">
+      <div className="h-[460px] w-full max-w-[500px] sm:h-[520px] sm:max-w-[560px]">
         <Canvas
           frameloop="demand"
           camera={{ position: [0, 0, 7], fov: 40 }}

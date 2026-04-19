@@ -35,9 +35,10 @@ const About = () => {
       const cards = scope.querySelectorAll<HTMLElement>(".pillar-card")
       if (!cards.length) return
 
-      const tween = gsap.from(
-        cards,
-        {
+      const mm = gsap.matchMedia(scope)
+
+      mm.add("(min-width: 768px)", () => {
+        gsap.from(cards, {
           scale: 0,
           autoAlpha: 0,
           ease: "power2.inOut",
@@ -48,12 +49,27 @@ const About = () => {
             end: "center top",
             scrub: true,
           },
-        }
-      )
+        })
+      })
+
+      mm.add("(max-width: 767px)", () => {
+        gsap.from(cards, {
+          y: 230,
+          autoAlpha: 0,
+          opacity:0,
+          ease: "power2.inOut",
+          stagger: 0.03,
+          scrollTrigger: {
+            trigger: scope,
+            start: "top 45%",
+            end: "center top",
+            scrub: true,
+          },
+        })
+      })
 
       return () => {
-        tween.scrollTrigger?.kill()
-        tween.kill()
+        mm.revert()
       }
     },
     { scope: sectionRef }
@@ -92,7 +108,7 @@ const About = () => {
 
           {/* Card 03 — right */}
           <div className="flex flex-1 items-start justify-center md:justify-end md:pt-16 lg:pt-24">
-            <PillarCard id={pillars[2].id} text={pillars[2].text} />
+            <PillarCard id={pillars[1].id} text={pillars[1].text} />
           </div>
         </div>
 
@@ -102,7 +118,7 @@ const About = () => {
           <div className="order-first w-[140px] sm:w-[170px] md:order-0 md:w-[200px] lg:w-[220px]" />
 
           <div className="flex flex-1 items-start justify-center md:justify-start">
-            <PillarCard id={pillars[1].id} text={pillars[1].text} />
+            <PillarCard id={pillars[2].id} text={pillars[2].text} />
           </div>
 
           <div className="flex flex-1 items-start justify-center md:justify-end md:pt-16 lg:pt-24" />
