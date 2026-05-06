@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText)
 const sections = [
   {
     label: "Background",
-    text: "ANTACHIA takes its name from Antakya, southern Turkey — one of the oldest cities in the world and a place where olive culture has been woven into daily life for thousands of years. The olive itself traces back to ancient Greece, where it was far more than a crop. It was a symbol of sustenance, wisdom, and care. We carry that lineage into everything we do, operating across Turkey and Ethiopia with the conviction that where an olive grows shapes everything about how it tastes.",
+    text: "ANTACHIA takes its name from Antakya, southern Turkey — one of the oldest cities in the world and a place where olive culture has been woven into daily life for thousands of years. The olive itself traces back to ancient Anatolia, where it was far more than a crop. It was a symbol of sustenance, wisdom, and care. We carry that lineage into everything we do, operating across Turkey and Ethiopia with the conviction that where an olive grows shapes everything about how it tastes.",
   },
   {
     label: "Process",

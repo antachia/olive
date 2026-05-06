@@ -50,15 +50,16 @@ const Products = () => {
         {/* Description */}
         <div className="mb-10 space-y-4">
           <p className="font-garamond-lt-narrow text-secondary font-bold">
-            ANTACHIA Extra Virgin is made from hand-picked olives harvested at the point of peak ripeness. Within
-            hours of picking, the fruit is cold pressed, a process that keeps every layer of natural flavor intact. No heat, no
-            chemicals, no second chances. What ends up in the bottle is exactly what the land produced.
+            ANTACHIA Olive Oil Blend is built on precision and balance. Refined olive pomace oil is carefully purified to achieve exceptional clarity and stability, then elevated with a measured addition of extra virgin olive oil, bringing back the nuance, aroma, and character of the olive at its best.
           </p>
           <p className="font-garamond-lt-narrow text-secondary font-bold">
-            The result is an oil with a fresh, green character, a gentle pepperiness on the finish, and the kind of depth
-            that comes from soil that has been growing olives for generations. It works beautifully as a finishing oil over
-            salads, grilled vegetables, bread, or anywhere you want the flavor to actually show up. It also holds its own in
-            light cooking where quality matters as much as heat.
+            What emerges is a controlled expression of olive oil: clean, fluid, and quietly complex. A soft golden body, a delicate olive fragrance, and a smooth finish with just a trace of green freshness. Nothing heavy, nothing excessive, only what is essential.
+          </p>
+          <p className="font-garamond-lt-narrow text-secondary font-bold">
+            It moves effortlessly from high-heat cooking to final touches on the plate. It doesn&apos;t compete with your ingredients; it refines them. This is not about intensity—it&apos;s about control, consistency, and understated elegance.
+          </p>
+          <p className="font-garamond-lt-narrow text-secondary font-bold">
+            Made for kitchens that demand both performance and balance, ANTACHIA is olive oil, adapted to real cooking.
           </p>
         </div>
 

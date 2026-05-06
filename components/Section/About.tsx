@@ -16,7 +16,7 @@ const pillars = [
   },
   {
     id: "02",
-    text: "Our olives trace their lineage to the ancient groves of Greece where the olive tree wasn\u2019t farmed, it was worshipped.",
+    text: "Our olives trace their lineage to the ancient groves of Anatolia where the olive tree wasn\u2019t farmed, it was worshipped.",
   },
   {
     id: "03",

@@ -73,10 +73,10 @@ const Footer = () => {
               Phone
             </p>
             <a
-              href="tel:+0"
+              href="tel:+251992255555"
               className="font-garamond-lt-narrow text-sm uppercase tracking-widest text-white/90 transition-opacity duration-200 hover:opacity-70 sm:text-base md:text-lg"
             >
-              +251987654523
+              +251 992 25 5555
             </a>
           </div>
 
@@ -85,7 +85,7 @@ const Footer = () => {
               Based In
             </p>
             <p className="font-garamond-lt-narrow text-sm uppercase tracking-widest text-white/90 sm:text-base md:text-lg">
-              Ankara, Turkey
+              Antakya, Türkiye
             </p>
           </div>
 
