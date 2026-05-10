@@ -6,13 +6,7 @@ export const vertexShader = /* glsl */ `
   }
 `
 
-export const fragmentShader = /* glsl */ `
-  uniform float uProgress;
-  uniform vec2 uResolution;
-  uniform vec3 uColor;
-  uniform float uSpread;
-  varying vec2 vUv;
-
+const noiseHelpers = /* glsl */ `
   float Hash(vec2 p) {
     vec3 p2 = vec3(p.xy, 1.0);
     return fract(sin(dot(p2, vec3(37.1, 61.7, 12.4))) * 3758.5453123);
@@ -36,19 +30,36 @@ export const fragmentShader = /* glsl */ `
     v += noise(p * 4.0) * 0.125;
     return v;
   }
+`
+
+// Run once on init/resize to bake the FBM noise into a texture so the
+// per-frame shader doesn't have to recompute 3 octaves of noise per pixel.
+export const noiseFragmentShader = /* glsl */ `
+  uniform vec2 uResolution;
+  varying vec2 vUv;
+  ${noiseHelpers}
+  void main() {
+    float aspect = uResolution.x / uResolution.y;
+    vec2 centeredUv = (vUv - 0.5) * vec2(aspect, 1.0);
+    float n = fbm(centeredUv * 15.0);
+    gl_FragColor = vec4(n, n, n, 1.0);
+  }
+`
+
+export const fragmentShader = /* glsl */ `
+  uniform sampler2D uNoise;
+  uniform float uProgress;
+  uniform vec2 uResolution;
+  uniform vec3 uColor;
+  uniform float uSpread;
+  varying vec2 vUv;
 
   void main() {
-    vec2 uv = vUv;
-    float aspect = uResolution.x / uResolution.y;
-    vec2 centeredUv = (uv - 0.5) * vec2(aspect, 1.0);
-
-    float dissolveEdge = uv.y - uProgress * 1.2;
-    float noiseValue = fbm(centeredUv * 15.0);
+    float dissolveEdge = vUv.y - uProgress * 1.2;
+    float noiseValue = texture2D(uNoise, vUv).r;
     float d = dissolveEdge + noiseValue * uSpread;
-
     float pixelSize = 1.0 / uResolution.y;
     float alpha = 1.0 - smoothstep(-pixelSize, pixelSize, d);
-
     gl_FragColor = vec4(uColor, alpha);
   }
 `

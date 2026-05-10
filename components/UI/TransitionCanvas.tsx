@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react"
 import * as THREE from "three"
 import { useLenis } from "lenis/react"
-import { vertexShader, fragmentShader } from "@/lib/shaders"
+import { vertexShader, fragmentShader, noiseFragmentShader } from "@/lib/shaders"
 
 function hexToRgb(hex: string) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
@@ -40,10 +40,34 @@ const TransitionCanvas = () => {
       canvas,
       alpha: true,
       antialias: false,
+      powerPreference: "high-performance",
+      stencil: false,
+      depth: false,
     })
+    renderer.autoClear = true
 
     const rgb = hexToRgb(CONFIG.color)
     const geometry = new THREE.PlaneGeometry(2, 2)
+
+    // Bake the FBM noise into a texture once per resize. The per-frame
+    // shader then samples this texture instead of recomputing 3 octaves of
+    // noise per pixel — visually identical, ~10x cheaper fragment work.
+    const noiseTarget = new THREE.WebGLRenderTarget(2, 2, {
+      format: THREE.RGBAFormat,
+      type: THREE.UnsignedByteType,
+      minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter,
+      depthBuffer: false,
+      stencilBuffer: false,
+    })
+    const noiseMaterial = new THREE.ShaderMaterial({
+      vertexShader,
+      fragmentShader: noiseFragmentShader,
+      uniforms: {
+        uResolution: { value: new THREE.Vector2(2, 2) },
+      },
+    })
+
     const material = new THREE.ShaderMaterial({
       vertexShader,
       fragmentShader,
@@ -54,6 +78,7 @@ const TransitionCanvas = () => {
         },
         uColor: { value: new THREE.Vector3(rgb.r, rgb.g, rgb.b) },
         uSpread: { value: CONFIG.spread },
+        uNoise: { value: noiseTarget.texture },
       },
       transparent: true,
     })
@@ -61,13 +86,30 @@ const TransitionCanvas = () => {
     const mesh = new THREE.Mesh(geometry, material)
     scene.add(mesh)
 
+    function bakeNoise() {
+      if (!wrapper) return
+      const dpr = renderer.getPixelRatio()
+      const bakeWidth = Math.min(Math.round(wrapper.offsetWidth * dpr), 2048)
+      const bakeHeight = Math.min(Math.round(wrapper.offsetHeight * dpr), 2048)
+      noiseTarget.setSize(bakeWidth, bakeHeight)
+      noiseMaterial.uniforms.uResolution.value.set(bakeWidth, bakeHeight)
+      scene.overrideMaterial = noiseMaterial
+      renderer.setRenderTarget(noiseTarget)
+      renderer.render(scene, camera)
+      renderer.setRenderTarget(null)
+      scene.overrideMaterial = null
+    }
+
+    let dirty = true
     function resize() {
       if (!wrapper) return
       const width = wrapper.offsetWidth
       const height = wrapper.offsetHeight
-      renderer.setSize(width, height)
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+      renderer.setSize(width, height)
       material.uniforms.uResolution.value.set(width, height)
+      bakeNoise()
+      dirty = true
     }
 
     resize()
@@ -78,16 +120,23 @@ const TransitionCanvas = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         inView = entry.isIntersecting
+        if (inView) dirty = true
       },
       { rootMargin: "200px" }
     )
     observer.observe(canvas)
 
     let animId: number
+    let lastProgress = -1
     function animate() {
       if (inView) {
-        material.uniforms.uProgress.value = scrollProgressRef.current
-        renderer.render(scene, camera)
+        const progress = scrollProgressRef.current
+        if (progress !== lastProgress || dirty) {
+          material.uniforms.uProgress.value = progress
+          renderer.render(scene, camera)
+          lastProgress = progress
+          dirty = false
+        }
       }
       animId = requestAnimationFrame(animate)
     }
@@ -99,6 +148,8 @@ const TransitionCanvas = () => {
       cancelAnimationFrame(animId)
       geometry.dispose()
       material.dispose()
+      noiseMaterial.dispose()
+      noiseTarget.dispose()
       renderer.dispose()
     }
   }, [])

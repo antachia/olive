@@ -109,7 +109,10 @@ const AboutBottle = () => {
           antialias: true,
           powerPreference: "high-performance",
           alpha: true,
+          stencil: false,
+          depth: true,
         }}
+        performance={{ min: 0.5 }}
         style={{ background: "transparent" }}
       >
         <RoomLighting intensity={1} />
@@ -122,3 +125,5 @@ const AboutBottle = () => {
 }
 
 export default AboutBottle
+
+useGLTF.preload("/3d/CenterBottle.glb", "/draco/")
