@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/Layout/NavBar";
 import Footer from "@/components/Layout/Footer";
 import SmoothScrolling from "@/components/Utilities/SmoothScrolling";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -77,6 +78,14 @@ export default function RootLayout({
           {children}
           <Footer />
         </SmoothScrolling>
+        <Toaster
+          position="top-center"
+          richColors
+          closeButton
+          toastOptions={{
+            className: "font-garamond-lt-narrow",
+          }}
+        />
       </body>
     </html>
   );

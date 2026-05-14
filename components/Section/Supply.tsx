@@ -2,34 +2,68 @@
 
 import Image from "next/image"
 import { useState } from "react"
+import { toast } from "sonner"
 
-type Status = "idle" | "submitting" | "success" | "error"
+type FormFields = {
+  name: string
+  phoneNumber: string
+  organization: string
+  industry: string
+  message: string
+}
+
+type FieldErrors = Partial<Record<keyof FormFields, string>>
+
+const INITIAL_FORM: FormFields = {
+  name: "",
+  phoneNumber: "+251",
+  organization: "",
+  industry: "",
+  message: "",
+}
 
 const Supply = () => {
-  const [form, setForm] = useState({
-    name: "",
-    phoneNumber: "+251",
-    organization: "",
-    industry: "",
-    message: "",
-  })
-  const [status, setStatus] = useState<Status>("idle")
-  const [errorMessage, setErrorMessage] = useState("")
+  const [form, setForm] = useState<FormFields>(INITIAL_FORM)
+  const [errors, setErrors] = useState<FieldErrors>({})
+  const [submitting, setSubmitting] = useState(false)
 
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
+    const { name, value } = e.target
+    setForm((f) => ({ ...f, [name]: value }))
+    if (errors[name as keyof FormFields]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }))
+    }
+  }
+
+  const validate = (): FieldErrors => {
+    const next: FieldErrors = {}
+    if (!form.name.trim()) {
+      next.name = "Please enter your name."
+    }
+    const phoneDigits = form.phoneNumber.replace(/\D/g, "")
+    if (!form.phoneNumber.trim() || phoneDigits.length < 4) {
+      next.phoneNumber = "Please enter a valid phone number."
+    }
+    return next
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    const fieldErrors = validate()
+    if (Object.keys(fieldErrors).length > 0) {
+      setErrors(fieldErrors)
+      toast.error("Please fix the highlighted fields and try again.")
+      return
+    }
+
     const accessKey = process.env.NEXT_PUBLIC_W3F_ACCESS_KEY
     if (!accessKey) {
-      setStatus("error")
-      setErrorMessage("Form is not configured. Please try again later.")
+      toast.error("Form is not configured. Please try again later.")
       return
     }
 
@@ -38,8 +72,7 @@ const Supply = () => {
     const botcheck = (formEl.elements.namedItem("botcheck") as HTMLInputElement | null)?.checked
     if (botcheck) return
 
-    setStatus("submitting")
-    setErrorMessage("")
+    setSubmitting(true)
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
@@ -61,21 +94,16 @@ const Supply = () => {
       })
       const data = await res.json()
       if (data.success) {
-        setStatus("success")
-        setForm({
-          name: "",
-          phoneNumber: "+251",
-          organization: "",
-          industry: "",
-          message: "",
-        })
+        toast.success("Thanks — we'll be in touch shortly.")
+        setForm(INITIAL_FORM)
+        setErrors({})
       } else {
-        setStatus("error")
-        setErrorMessage(data.message || "Something went wrong. Please try again.")
+        toast.error(data.message || "Something went wrong. Please try again.")
       }
     } catch {
-      setStatus("error")
-      setErrorMessage("Network error. Please check your connection and try again.")
+      toast.error("Network error. Please check your connection and try again.")
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -141,9 +169,16 @@ const Supply = () => {
                       name="name"
                       value={form.name}
                       onChange={handleChange}
-                      required
-                      className="h-10 w-full bg-white px-3 font-garamond-lt-narrow text-sm text-accent outline-none"
+                      aria-invalid={!!errors.name}
+                      className={`h-10 w-full bg-white px-3 font-garamond-lt-narrow text-sm text-accent outline-none ${
+                        errors.name ? "ring-2 ring-red-500" : ""
+                      }`}
                     />
+                    {errors.name && (
+                      <p className="mt-1 font-garamond-lt-narrow text-[11px] uppercase tracking-widest text-red-300">
+                        {errors.name}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label className="mb-2 block font-garamond-lt-narrow text-[11px] uppercase tracking-widest  sm:text-[12px]">
@@ -154,9 +189,16 @@ const Supply = () => {
                       name="phoneNumber"
                       value={form.phoneNumber}
                       onChange={handleChange}
-                      required
-                      className="h-10 w-full bg-white px-3 font-garamond-lt-narrow text-sm text-accent outline-none"
+                      aria-invalid={!!errors.phoneNumber}
+                      className={`h-10 w-full bg-white px-3 font-garamond-lt-narrow text-sm text-accent outline-none ${
+                        errors.phoneNumber ? "ring-2 ring-red-500" : ""
+                      }`}
                     />
+                    {errors.phoneNumber && (
+                      <p className="mt-1 font-garamond-lt-narrow text-[11px] uppercase tracking-widest text-red-300">
+                        {errors.phoneNumber}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -214,25 +256,14 @@ const Supply = () => {
                 </div>
 
                 {/* Submit — centered + compact */}
-                <div className="mt-4 flex flex-col items-center gap-3">
+                <div className="mt-4 flex justify-center">
                   <button
                     type="submit"
-                    disabled={status === "submitting"}
+                    disabled={submitting}
                     className="cursor-pointer rounded-sm bg-neonGreen px-10 py-1.5 font-garamond-lt-narrow text-sm text-accent transition-colors duration-200 hover:bg-neonGreen/80 disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    {status === "submitting" ? "Sending..." : "Request"}
+                    {submitting ? "Sending..." : "Request"}
                   </button>
-
-                  {status === "success" && (
-                    <p className="font-garamond-lt-narrow text-[12px] uppercase tracking-widest text-neonGreen">
-                      Thanks — we&apos;ll be in touch shortly.
-                    </p>
-                  )}
-                  {status === "error" && (
-                    <p className="font-garamond-lt-narrow text-[12px] uppercase tracking-widest text-red-400">
-                      {errorMessage}
-                    </p>
-                  )}
                 </div>
               </form>
             </div>
