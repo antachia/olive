@@ -33,9 +33,9 @@ const Supply = () => {
       return
     }
 
-    // Honeypot anti-spam: real users leave this empty.
+    // Honeypot anti-spam: real users never check this hidden box.
     const formEl = e.currentTarget
-    const botcheck = (formEl.elements.namedItem("botcheck") as HTMLInputElement | null)?.value
+    const botcheck = (formEl.elements.namedItem("botcheck") as HTMLInputElement | null)?.checked
     if (botcheck) return
 
     setStatus("submitting")
